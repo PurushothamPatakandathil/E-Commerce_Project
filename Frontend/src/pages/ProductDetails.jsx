@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios"
-function ProductDetails() {
+import { useCart } from "../context/CartContext";
+
+export function ProductDetails() {
     const { id } = useParams();
     // const BASEURL = import.meta.url.VITE_DJANGO_BASE_URL;
     const BASEURL = import.meta.env.VITE_DJANGO_BASE_URL;
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
+    const {addToCart} = useCart();
     console.log(id)
     useEffect(() => {
         fetchData()
@@ -66,7 +69,7 @@ function ProductDetails() {
                         </h1>
                         <p className="text-gray-600 mb-4">{product?.description}</p>
                         <p className="text-2xl font-semibold text-green-600 mb-6">{product?.price}</p>
-                        <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Add to Cart</button>
+                        <button onClick={()=> addToCart(product)} className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Add to Cart 🛒</button>
                     </div>
                 </div>
             </div>
@@ -74,4 +77,4 @@ function ProductDetails() {
     )
 }
 
-export default ProductDetails;
+// export default ProductDetails;

@@ -3,7 +3,7 @@ import ProductCard from "../components/ProductCard";
 // import { jsx } from "react/jsx-runtime";
 
 
-function ProductList() {
+export function ProductList() {
     const [product, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -52,4 +52,4 @@ function ProductList() {
     )
 }
 
-export default ProductList;
+// export default ProductList;
